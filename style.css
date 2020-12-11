@@ -1,16 +1,79 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #f6f7fb;
-  font-family: 'Muli', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  background-color: #333;
+  color: #222;
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+  /* hides the scroll on the x-axis, so can scroll up an down */
   margin: 0;
+}
+
+.container {
+  background-color: #fafafa;
+  transform-origin: top left;
+  /* default transform-origin is from the center of the page
+  this makes it so it rotates from the top left instead */
+  transition: transform 0.5s linear;
+  /* puts a transition on the transform of linear(all at once) at speed .5seconds */
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+.container.show-nav {
+  transform: rotate(-20deg);
+  /* rotates our container with contents */
+}
+
+.circle-container {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  /* offsets the circle to show only half of the pixels on top and left
+  it is half b/c we define the circle as being 200px in the .circle below */
+}
+
+.circle {
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.5s linear;
+}
+
+.circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: #fff;
+}
+
+.circle button:focus {
+  outline: none;
+}
+
+.circle button#open {
+  left: 60%;
+}
+
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+.content img {
+  max-width: 100%;
+  /* sets image to take up only 100% of its container */
 }
